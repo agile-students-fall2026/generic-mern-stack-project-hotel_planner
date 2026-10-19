@@ -5,4 +5,5 @@ This repository contains instructions and files for two assignments that togethe
 
 
 - [app map & wireframe instructions](instructions-0a-app-map-wireframes.md).
-- [prototype]([instructions-0b-prototyping.md](https://www.figma.com/design/shT7ebGXrUABxCxFLSnn87/Prototype?node-id=4-24&t=WucFNm1PSrW5uZba-1))
+- [prototype] https://www.figma.com/design/shT7ebGXrUABxCxFLSnn87/Prototype?node-id=4-24&t=WucFNm1PSrW5uZba-1 
+  
