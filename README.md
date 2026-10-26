@@ -19,3 +19,6 @@ Ryan - [GitHub Profile](https://github.com/ryanwlin)
 Aaron - [GitHub Profile](https://github.com/Aaron-982)
 
 ---
+
+## Contributing.md
+[Contributing.md](https://github.com/agile-students-fall2026/generic-mern-stack-project-hotel_planner/blob/master/CONTRIBUTING.md)
