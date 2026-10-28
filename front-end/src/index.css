@@ -1,0 +1,21 @@
+
+.phone-screen {
+  width: 390px;
+  max-width: 100%;
+  height: min(844px, 100dvh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  flex-shrink: 0;
+}

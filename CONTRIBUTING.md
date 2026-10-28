@@ -38,3 +38,8 @@ A task is considered complete when:
 - Follow consistent coding conventions.
 - All code must be reviewed and tested before merging.
 - Keep the main branch functional and avoid unnecessary complexity.
+
+### 7. Pull Request & Branch Management
+- The last person working on a branch should notify and @mention the team in Discord when the PR is ready for review and merging.
+- Avoid duplicate or premature notifications.
+- Keep active branches until their PRs are merged, then delete the merged branches to keep the repository organized.
