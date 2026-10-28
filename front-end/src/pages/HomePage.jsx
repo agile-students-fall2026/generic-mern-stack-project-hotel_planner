@@ -1,10 +1,11 @@
 import "./HomePage.css";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   return (
-    <main className="phone-screen homepage">
+    <main className="homepage">
         <header className="home-header">
-            <img src="https://picsum.photos/340/180" alt="Sample" />
+            <img src="https://picsum.photos/340/180" alt="Sample" className="logo" />
 
             <div className="home-header-actions">
             <button type="button" className="home-header-button">
@@ -35,9 +36,9 @@ function HomePage() {
           readOnly
         />
 
-        <button type="button" className="home-search-button">
-          search
-        </button>
+       <Link to="/results" className="home-search-button">
+              search
+        </Link>
       </section>
 
 
