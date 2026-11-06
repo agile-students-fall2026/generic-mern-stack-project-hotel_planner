@@ -13,7 +13,7 @@ function HotelDetails() {
 
   if (!hotel) {
     return (
-      <main className="hotel-details">
+      <main className="hotel-details-page">
         <h2>Hotel not found</h2>
         <Link to="/results">Back to Search Results</Link>
       </main>
@@ -25,7 +25,7 @@ function HotelDetails() {
   }
 
   return (
-    <main className="hotel-details">
+    <main className="hotel-details-page">
       <header className="hotel-details-header">
         <Link to="/results" className="hotel-back">
           ← Back
