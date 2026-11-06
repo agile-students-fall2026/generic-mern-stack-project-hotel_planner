@@ -1,3 +1,4 @@
+import { mockHotels } from "../data/mockHotels";
 import HotelDetails from "../components/HotelDetails";
 import { Link } from "react-router-dom";
 import "./Home&ResultsPage.css";
@@ -40,10 +41,11 @@ function ResultsPage() {
     <section className="results-content">
   <h2 className="results-title">results</h2>
 
-  <div className="results-cards">
-    <HotelDetails />
-    <HotelDetails />
-  </div>
+<div className="results-cards">
+  {mockHotels.map((hotel) => (
+    <HotelDetails key={hotel.id} hotel={hotel} />
+  ))}
+</div>
     </section>
 
 

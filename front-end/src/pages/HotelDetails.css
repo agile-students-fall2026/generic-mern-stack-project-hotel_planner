@@ -1,10 +1,9 @@
 
 /* Hotel Details Page */
 
-.hotel-details {
-  padding: 18px;
-  height: 100%;
-  overflow-y: auto;
+.hotel-details-page {
+  padding: 16px;
+  min-height: 100%;
   box-sizing: border-box;
   background-color: #ffffff;
   color: #222;
@@ -13,68 +12,73 @@
 
 /* Header */
 
-.hotel-details-header {
+.hotel-details-page .hotel-details-header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
-.hotel-details-header h1 {
+.hotel-details-page .hotel-details-header h1 {
   font-size: 20px;
   font-weight: 600;
   margin: 0;
 }
 
-.hotel-back {
-  color: #333;
+.hotel-details-page .hotel-back {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: lightgray;
+  border-radius: var(--input-radius, 8px);
+  color: #222;
   text-decoration: none;
   font-size: 14px;
 }
 
-.hotel-back:hover {
-  text-decoration: underline;
+.hotel-details-page .hotel-back:hover {
+  background-color: #c5c5c5;
 }
 
 /* Main Hotel Image */
 
-.hotel-main-image {
+.hotel-details-page .hotel-main-image {
   display: block;
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 /* Hotel Information */
 
-.hotel-information h2 {
+.hotel-details-page .hotel-information h2 {
   margin: 18px 0 8px;
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.hotel-information h3 {
-  font-size: 17px;
-  margin: 22px 0 10px;
+.hotel-details-page .hotel-information h3 {
+  font-size: 16px;
+  margin: 20px 0 10px;
+  font-weight: 600;
 }
 
-.hotel-location {
+.hotel-details-page .hotel-location {
   color: #666;
   font-size: 14px;
   margin: 8px 0;
 }
 
-.hotel-rating {
-  color: #d18b00;
-  font-size: 15px;
-  font-weight: bold;
-  margin: 12px 0;
+.hotel-details-page .hotel-rating {
+  color: #555;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0;
 }
 
 /* Description */
 
-.hotel-description {
+.hotel-details-page .hotel-description {
   color: #555;
   line-height: 1.6;
   font-size: 14px;
@@ -82,7 +86,7 @@
 
 /* Amenities */
 
-.hotel-amenities {
+.hotel-details-page .hotel-amenities {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -91,51 +95,55 @@
   font-size: 14px;
 }
 
-.hotel-amenities li {
+.hotel-details-page .hotel-amenities li {
   line-height: 1.5;
 }
 
 /* Save Hotel Button */
 
-.hotel-save-button {
+.hotel-details-page .hotel-save-button {
   display: block;
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   margin: 24px 0 8px;
   border: none;
-  border-radius: 10px;
-  background-color: #243a69;
-  color: white;
-  font-size: 16px;
+  border-radius: var(--input-radius, 8px);
+  background-color: lightgray;
+  color: #222;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
-.hotel-save-button:hover {
-  background-color: #344f86;
+.hotel-details-page .hotel-save-button:hover {
+  background-color: #c5c5c5;
 }
 
-.hotel-save-button.is-saved {
-  background-color: #287a53;
+.hotel-details-page .hotel-save-button.is-saved {
+  background-color: #d9eadb;
+  color: #222;
 }
 
-.hotel-save-button.is-saved:hover {
-  background-color: #206642;
+.hotel-details-page .hotel-save-button.is-saved:hover {
+  background-color: #c4dfc8;
+}
+
+/* Keyboard Accessibility */
+
+.hotel-details-page .hotel-back:focus-visible,
+.hotel-details-page .hotel-save-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
 }
 
 /* Mobile Layout */
 
 @media (max-width: 480px) {
-  .hotel-details {
+  .hotel-details-page {
     padding: 15px;
   }
 
-  .hotel-main-image {
+  .hotel-details-page .hotel-main-image {
     height: 180px;
-  }
-
-  .hotel-information h2 {
-    font-size: 22px;
   }
 }
