@@ -1,20 +1,32 @@
 import "./Card.css";
+
 function Card(props) {
   return (
     <article className="card">
-      <div className="image_and_edit">
-        {props.imageSrc ? (
-          <div className="card-image">
-              <img src={props.imageSrc} alt="" />
-          </div>
-        ) : (
-          <div className="card-image">
-              <img src="https://picsum.photos/200/300" alt="Random placeholder from Picsum"/>
-          </div>
-        )}
-        <button className='Saved-EditBtn' onClick={props.Edit}>editButton</button>
+      <div className="image-and-edit">
+        <div className="card-image">
+          <img
+            src={props.imageSrc || "https://picsum.photos/400/225"}
+            alt=""
+          />
+        </div>
+        <button
+          className="Saved-EditBtn"
+          onClick={props.Edit}
+          aria-label="Edit saved hotel"
+        >
+          Edit
+        </button>
       </div>
-      <div className="card-info">{props.description}</div>
+
+      <div className="card-info">
+        <h3 className="card-name">{props.name}</h3>
+        <div className="card-meta">
+          {props.location && <span>{props.location}</span>}
+          {props.date && <span>{props.date}</span>}
+        </div>
+        <p className="card-description">{props.description}</p>
+      </div>
     </article>
   );
 }
