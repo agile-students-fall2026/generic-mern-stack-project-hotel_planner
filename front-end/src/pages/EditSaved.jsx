@@ -23,6 +23,15 @@ function EditSaved(props){
                     )}
                     <button id='EditSaved-BackBtn' onClick={props.goBack}>Back</button>
                 </div>
+
+                <div className="edit-card-header">
+                    <h3 className="edit-card-name">{props.name}</h3>
+                    <div className="edit-card-meta">
+                        {props.location && <span>{props.location}</span>}
+                        {props.date && <span>{props.date}</span>}
+                    </div>
+                </div>
+
                 <textarea
                     className="edit-card-info"
                     value={draft}
