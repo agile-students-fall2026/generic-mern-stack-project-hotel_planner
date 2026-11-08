@@ -10,11 +10,7 @@ function Card(props) {
             alt=""
           />
         </div>
-        <button
-          className="Saved-EditBtn"
-          onClick={props.Edit}
-          aria-label="Edit saved hotel"
-        >
+        <button className="Saved-EditBtn" onClick={props.Edit}>
           Edit
         </button>
       </div>
