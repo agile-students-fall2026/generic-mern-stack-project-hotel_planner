@@ -29,9 +29,9 @@
 .bottom-nav {
   display: flex;
   justify-content: space-around;
-  flex-shrink: 0;
-  padding: 2%;
-  border-bottom-left-radius: var(--border-radius);
-  border-bottom-right-radius: var(--border-radius);
-  background-color: lightgray;
+  padding: 0.5rem 0;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ddd;
+  border-bottom-left-radius: var(--border-radius, 8px);
+  border-bottom-right-radius: var(--border-radius, 8px);
 }
