@@ -6,6 +6,7 @@ import Saved from "./pages/Saved";
 import EditSaved from "./pages/EditSaved";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
+import Profile from "./Profile";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/editsaved" element={<EditSaved />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       </div>
 
@@ -31,6 +33,7 @@ function App() {
         <Link to="/">home</Link>
         <Link to="/">search</Link>
         <Link to="/saved">saved</Link>
+        <Link to="/profile">profile</Link>
       </nav>
       </div>
     </BrowserRouter>
