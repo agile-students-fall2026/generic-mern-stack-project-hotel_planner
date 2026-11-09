@@ -7,6 +7,7 @@ import EditSaved from "./pages/EditSaved";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { SavedContent } from "./shared_content/SavedContent";
+import Profile from "./pages/Profile";
 
 const hideNavOn = ["/signin", "/signup"];
 
@@ -44,6 +45,7 @@ function AppContent() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/hotel/:id" element={<HotelDetails />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
 
@@ -52,7 +54,7 @@ function AppContent() {
         <nav className="bottom-nav">
           <Link to="/"><HomeIcon /></Link>
           <Link to="/saved"><SavedIcon /></Link>
-          <Link to="/"><ProfileIcon /></Link>
+          <Link to="/profile"><ProfileIcon /></Link>
         </nav>
       ) : null}
     </div>
