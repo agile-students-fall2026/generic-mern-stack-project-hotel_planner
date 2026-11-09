@@ -50,9 +50,9 @@ function AppContent() {
       {/* Bottom navigation, links are to be filled */}
       {showNav ? (
         <nav className="bottom-nav">
-          <Link to="/" aria-label="Home"><HomeIcon /></Link>
-          <Link to="/saved" aria-label="Saved"><SavedIcon /></Link>
-          <Link to="/" aria-label="Profile"><ProfileIcon /></Link>
+          <Link to="/"><HomeIcon /></Link>
+          <Link to="/saved"><SavedIcon /></Link>
+          <Link to="/"><ProfileIcon /></Link>
         </nav>
       ) : null}
     </div>
