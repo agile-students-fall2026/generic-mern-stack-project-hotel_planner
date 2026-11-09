@@ -5,42 +5,31 @@
   padding: 5%;
 }
 
-.saved_header{
+.saved-header{
     display: flex;
     flex-direction: row;
     height: 7%;
     width: 100%;
 }
 
-.card {
-    border: solid;
-    margin-top: 10%;
-    display: flex;
-    flex-direction: column;
-    min-height: 15%;
-    height: 15%;
-    width: 100%;
+.list-end-spacer {
+  height: .5vh;
+  flex-shrink: 0;
 }
 
-.image_and_edit{
-    display: flex;
-    flex-direction: row;
-    flex: 1;
+.saved-header-info {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0 1rem;
 }
 
-.card-info {
-    flex:3;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-left: 1%;
-    padding-right: 1%;
-    border: solid;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.card-image{
-    flex:5;
-    border: solid;
-    text-align: center;
+.saved-filter-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  font-size: 16px;
+  border: 1px solid #ddd;
 }

@@ -4,7 +4,7 @@ Hotel Planner is a web app for travelers who want to organize, track, and archiv
 
 ---
 
-### Product Vision
+## Product Vision
 To allow travelers with a centralized web application to track active hotel reservations and store past stays into a searchable personal archive that contains recordings of traveler's experiences at each hotel.
 
 ---
@@ -21,4 +21,38 @@ Aaron - [GitHub Profile](https://github.com/Aaron-982)
 ---
 
 ## Contributing.md
-[Contributing.md](https://github.com/agile-students-fall2026/generic-mern-stack-project-hotel_planner/blob/master/CONTRIBUTING.md)
+Instructions for contributions: [Contributing.md](https://github.com/agile-students-fall2026/generic-mern-stack-project-hotel_planner/blob/master/CONTRIBUTING.md)
+
+---
+## Project Set Up and Run Instructions
+### Prerequisites
+Install these before you start:
+
+- Node.js
+- Git
+### 1. Get the code
+
+```bash
+git clone https://github.com/agile-students-fall2026/generic-mern-stack-project-hotel_planner.git
+cd generic-mern-stack-project-hotel_planner
+```
+
+### 2. Run the front-end (React + Vite)
+Open a terminal in the project root and run:
+
+```bash
+cd front-end
+npm install
+npm run dev
+```
+
+### 3. Current Pages in the app
+
+| Path | Page |
+|---|---|
+| `/` | Home and search |
+| `/results` | Search results |
+| `/hotel/:id` | Hotel details |
+| `/saved` | Saved hotels (edit and delete) |
+| `/signin` | Sign in |
+| `/signup` | Sign up |
