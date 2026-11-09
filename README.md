@@ -56,3 +56,4 @@ npm run dev
 | `/saved` | Saved hotels (edit and delete) |
 | `/signin` | Sign in |
 | `/signup` | Sign up |
+| `/profile` | profile |
