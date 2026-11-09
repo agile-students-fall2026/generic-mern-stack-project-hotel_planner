@@ -1,12 +1,47 @@
 import EditSaved from "./EditSaved";
 import "./Saved.css";
-import { useState } from "react";
-import { useSaved } from "../shared_content/SavedContent";
+import { useState, useEffect } from 'react';
 import Card from "../components/Card";
 
 function Saved() {
   {/* use the useState to load up the saved array from db when we get a db */}
-  const { savedItems, removeSaved, updateDescription } = useSaved();
+  const [savedItems, setSavedItems] = useState([
+    {
+      id: 1,
+      name: "Hotel Aurora",
+      location: "Paris, France",
+      date: "2026-12-14",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    },
+    {
+      id: 2,
+      name: "The Maple Inn",
+      location: "Vermont, USA",
+      date: "2027-01-05",
+      description: "Saved Hotel 2",
+    },
+    {
+      id: 3,
+      name: "Casa del Sol",
+      location: "Barcelona, Spain",
+      date: "2027-02-20",
+      description: "Saved Hotel 3",
+    },
+    {
+      id: 4,
+      name: "Harbor View Suites",
+      location: "Sydney, Australia",
+      date: "2027-03-11",
+      description: "Saved Hotel 4",
+    },
+    {
+      id: 5,
+      name: "Lotus Garden Resort",
+      location: "Kyoto, Japan",
+      date: "2027-04-02",
+      description: "Saved Hotel 5",
+    },
+  ]);
 
   const [filterText, setFilterText] = useState("");
   const visibleItems = savedItems.filter((item) =>
@@ -32,13 +67,17 @@ function Saved() {
 
   {/*modify for data base later*/}
   const handleSave = (id, newDescription) => {
-    updateDescription(id, newDescription);
+    setSavedItems(
+      savedItems.map((item) =>
+        item.id === id ? { ...item, description: newDescription } : item
+      )
+    );
     handleGoBack();
   };
 
   {/*modify for data base later*/}
   const handleDelete = (id) => { 
-    removeSaved(id);
+    setSavedItems(savedItems.filter((item) => item.id !== id));
     handleGoBack();
   };
 

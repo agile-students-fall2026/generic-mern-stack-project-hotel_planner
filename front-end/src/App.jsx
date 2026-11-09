@@ -7,6 +7,7 @@ import EditSaved from "./pages/EditSaved";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { SavedContent } from "./shared_content/SavedContent";
+import { SavedCurrentBooking } from "./shared_content/SavedCurrentBookings";
 
 const hideNavOn = ["/signin", "/signup"];
 
@@ -63,7 +64,9 @@ function App() {
   return (
     <BrowserRouter>
       <SavedContent>
-        <AppContent />
+        <SavedCurrentBooking>
+          <AppContent />
+        </SavedCurrentBooking>
       </SavedContent>
     </BrowserRouter>
   );

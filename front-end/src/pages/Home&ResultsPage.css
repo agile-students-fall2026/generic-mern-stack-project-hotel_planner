@@ -1,3 +1,9 @@
+.homepage{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .logo{
   width: 230px;
   height: 80px;
@@ -5,10 +11,16 @@
 }
 
 .home-header {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+}
+
+#home-page-current-bookings{
+  flex: 5;
+  padding: 5%;
 }
 
 .home-header-button {
