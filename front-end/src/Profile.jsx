@@ -65,7 +65,7 @@ function Profile() {
 
             <div className="profile-actions">
                 <button onClick={() => navigate("/saved")}>View Saved Items</button>
-                <button onClick={() => navigate("/signin")}>Sign Out</button>
+                <button className="sign-out" onClick={() => navigate("/signin")}>Sign Out</button>
             </div>
         </div>
     );
