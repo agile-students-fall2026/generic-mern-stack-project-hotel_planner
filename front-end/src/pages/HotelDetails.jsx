@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { mockHotels } from "../data/mockHotels";
 import { useSaved } from "../shared_content/SavedContent";
+import { useCurBookings } from "../shared_content/SavedCurrentBookings";
 import "./HotelDetails.css";
 
 function HotelDetails() {
@@ -9,6 +10,7 @@ function HotelDetails() {
   const hotel = mockHotels.find((item) => item.id === id);
 
   const { isSaved, toggleSaved } = useSaved();
+  const { isBookingSaved, toggleBookingSaved} = useCurBookings();
 
   if (!hotel) {
     return (
@@ -29,7 +31,18 @@ function HotelDetails() {
     });
   }
 
+  function handleBookingSave() {
+    toggleBookingSaved({
+      id: hotel.id,
+      name: hotel.name,
+      location: hotel.location,
+      description: hotel.description,
+      imageSrc: hotel.image,
+    });
+  }
+
   const saved = isSaved(hotel.id);
+  const bookingSaved = isBookingSaved(hotel.id);
   
   return (
     <main className="hotel-details-page">
@@ -70,6 +83,14 @@ function HotelDetails() {
           aria-pressed={saved}
         >
           {saved ? "✓ Saved — Click to Remove" : "♡ Save Hotel"}
+        </button>
+
+        <button
+          className={`hotel-save-button ${bookingSaved ? "is-booked" : ""}`}
+          onClick={handleBookingSave}
+          type="button"
+        >
+          {bookingSaved ? "✓ Booked — Click to Remove" : "♡ Book Hotel"}
         </button>
       </section>
     </main>
