@@ -15,10 +15,13 @@ function BookingCard(props) {
 
       <div className="card-info">
         <h3 className="card-name">{props.name}</h3>
-        <div className="card-meta-booking">
+        <div className="card-meta">
           {props.location && <span>{props.location}</span>}
-          {props.date && <span>{props.date}</span>}
         </div>
+          <div>Check in: {props.checkIn}</div>
+          <div> Check out: {props.checkOut}</div>
+          Notes
+          <div><p className="card-description">{props.description}</p></div>
       </div>
     </article>
   );

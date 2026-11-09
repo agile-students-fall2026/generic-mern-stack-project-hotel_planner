@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EditSaved from "./EditSaved";
+import EditBooking from "./EditBooking";
 import "./Home&ResultsPage.css";
 import { Link } from "react-router-dom";
 import { useCurBookings } from "../shared_content/SavedCurrentBookings";
@@ -20,9 +20,8 @@ function HomePage() {
       setActiveItemEdit(null);
     }
 
-    {/*modify for data base later*/}
-    const handleSave = (id, newDescription) => {
-      updateBooking(id, { description: newDescription });
+    const handleSave = (id, newDescription, newCheckIn, newCheckOut) => {
+      updateBooking(id, newDescription, newCheckIn, newCheckOut);
       handleGoBack();
     };
 
@@ -61,14 +60,14 @@ function HomePage() {
         <>
         <p>Current Bookings</p>
         {curBookings.map((item) => (
-          <BookingCard key={item.id} name={item.name} location={item.location} status={item.status} Edit={()=>handleEdit(item)}/>
+          <BookingCard key={item.id} checkIn = {item.checkIn} checkOut = {item.checkOut} name={item.name} location={item.location} description={item.description} Edit={()=>handleEdit(item)}/>
         ))}
         </>
       )}
       </div>
     </main>
   ) : (
-    <EditSaved id={activeItemEdit.id} name={activeItemEdit.name} location={activeItemEdit.location} date={activeItemEdit.checkIn} description={activeItemEdit.description} goBack={handleGoBack} onSave={handleSave} onDelete={handleDelete}/>
+    <EditBooking id={activeItemEdit.id} name={activeItemEdit.name} location={activeItemEdit.location} description={activeItemEdit.description} goBack={handleGoBack} onSave={handleSave} onDelete={handleDelete}/>
   );
 }
 

@@ -1,4 +1,3 @@
-
 export const mockHotels = [
   {
     id: "1",

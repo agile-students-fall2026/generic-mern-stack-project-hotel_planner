@@ -73,6 +73,8 @@
   border-top: 1px solid #ddd;
   overflow-y: auto;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .edit-card-name {
@@ -134,4 +136,7 @@
 .EditSaved-Btn:active {
   background-color: #b0b0b0;
   transform: scale(0.98);
+}
+.edit-date-input{
+  border: none;
 }

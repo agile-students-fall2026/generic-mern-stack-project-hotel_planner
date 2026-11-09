@@ -29,8 +29,16 @@ export function SavedCurrentBooking({ children }){
         }
     };
 
+    const updateBooking = (id, newDescription, newCheckIn, newCheckOut) => {
+        setCurBookings((bookingList) =>
+            bookingList.map((item) =>
+                sameId(item.id, id) ? { ...item, description: newDescription, checkIn: newCheckIn, checkOut: newCheckOut} : item
+            )
+        );
+    };
+
     return (
-        <curBookingContext.Provider value = {{curBookings, addBooking, deleteBooking, toggleBookingSaved, isBookingSaved}}>
+        <curBookingContext.Provider value = {{curBookings, addBooking, deleteBooking, toggleBookingSaved, isBookingSaved, updateBooking}}>
             {children}
         </curBookingContext.Provider>
     )
