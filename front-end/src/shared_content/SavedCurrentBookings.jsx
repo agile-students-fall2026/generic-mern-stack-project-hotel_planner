@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const curBookingContext = createContext(null);
 
+{/*used to share data to children in order for different files to have access to some shared data*/}
 export function SavedCurrentBooking({ children }){
     const [curBookings, setCurBookings] = useState([]);
     
@@ -21,7 +22,7 @@ export function SavedCurrentBooking({ children }){
         );
     }
 
-    const toggleBookingSaved = (hotel) => {
+    const toggleBookingSaved = (hotel) => { {/*ran when the save/book buttons in hotel details is ran*/}
         if (isBookingSaved(hotel.id)) {
             deleteBooking(hotel.id);
         } else {

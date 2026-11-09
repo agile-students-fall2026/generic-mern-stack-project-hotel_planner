@@ -67,7 +67,7 @@ function HomePage() {
       </div>
     </main>
   ) : (
-    <EditBooking id={activeItemEdit.id} name={activeItemEdit.name} location={activeItemEdit.location} description={activeItemEdit.description} goBack={handleGoBack} onSave={handleSave} onDelete={handleDelete}/>
+    <EditBooking checkIn={activeItemEdit.checkIn} checkOut={activeItemEdit.checkOut} id={activeItemEdit.id} name={activeItemEdit.name} location={activeItemEdit.location} description={activeItemEdit.description} goBack={handleGoBack} onSave={handleSave} onDelete={handleDelete}/>
   );
 }
 
