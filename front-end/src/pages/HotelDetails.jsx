@@ -1,7 +1,6 @@
-
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { mockHotels } from "../data/mockHotels";
+import { useSaved } from "../shared_content/SavedContent";
 import "./HotelDetails.css";
 
 function HotelDetails() {
@@ -9,7 +8,7 @@ function HotelDetails() {
 
   const hotel = mockHotels.find((item) => item.id === id);
 
-  const [isSaved, setIsSaved] = useState(false);
+  const { isSaved, toggleSaved } = useSaved();
 
   if (!hotel) {
     return (
@@ -21,9 +20,17 @@ function HotelDetails() {
   }
 
   function handleSave() {
-    setIsSaved((previous) => !previous);
+    toggleSaved({
+      id: hotel.id,
+      name: hotel.name,
+      location: hotel.location,
+      description: hotel.description,
+      imageSrc: hotel.image,
+    });
   }
 
+  const saved = isSaved(hotel.id);
+  
   return (
     <main className="hotel-details-page">
       <header className="hotel-details-header">
@@ -57,12 +64,12 @@ function HotelDetails() {
         </ul>
 
         <button
-          className={`hotel-save-button ${isSaved ? "is-saved" : ""}`}
+          className={`hotel-save-button ${saved ? "is-saved" : ""}`}
           onClick={handleSave}
           type="button"
-          aria-pressed={isSaved}
+          aria-pressed={saved}
         >
-          {isSaved ? "✓ Saved — Click to Remove" : "♡ Save Hotel"}
+          {saved ? "✓ Saved — Click to Remove" : "♡ Save Hotel"}
         </button>
       </section>
     </main>
