@@ -36,8 +36,10 @@ function HotelDetails() {
       id: hotel.id,
       name: hotel.name,
       location: hotel.location,
-      description: hotel.description,
+      description: "",
       imageSrc: hotel.image,
+      checkIn:"",
+      checkOut: "",
     });
   }
 
