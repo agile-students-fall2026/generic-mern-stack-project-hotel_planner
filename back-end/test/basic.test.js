@@ -1,4 +1,4 @@
-const{isHotelNameValid} = require('../src/hotel');
+import { isHotelNameValid } from '../src/hotel.js';
 
 describe('name validation', function () {
 

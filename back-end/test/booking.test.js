@@ -1,4 +1,4 @@
-const { isValidDateRange } = require('../src/booking');
+import { isValidDateRange } from '../src/booking.js';
 
 describe('booking date validation', function () {
 
