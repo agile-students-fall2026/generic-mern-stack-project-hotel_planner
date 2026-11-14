@@ -1,18 +1,18 @@
-const{isValidDateRange} = require('../src/booking');
+const { isValidDateRange } = require('../src/booking');
 
 describe('booking date validation', function () {
 
-let expect;
+    let expect;
 
-    before(async function (){
+    before(async function () {
 
-        ({expect} = await import('chai'));
+        ({ expect } = await import('chai'));
     }
 
     );
 
 
-    it('returns true when checkout is after check-in', function(){
+    it('returns true when checkout is after check-in', function () {
         const checkIn = '2026-12-01';
         const checkOut = '2026-12-03';
         const result = isValidDateRange(checkIn, checkOut);
