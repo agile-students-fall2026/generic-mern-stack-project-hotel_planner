@@ -1,61 +1,26 @@
-
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 import "./Sign.css";
 
 function SignIn() {
     const navigate = useNavigate();
+    const [email, SetEmail] = useState("");
+    const [password, SetPassword] = useState("");
+    const [error, SetError] = useState("");
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
         if (!email || !password) {
-            setError("Please enter an email and password.");
+            SetError("Please enter an email and password.");
             return;
         }
-
-        setError("");
-        setLoading(true);
-
-        try {
-            const response = await fetch("/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify({
-                    email,
-                    password,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                setError(data.error || "Login failed.");
-                return;
-            }
-
-            // Login successful
-            navigate("/", { replace: true });
-
-        } catch (err) {
-            setError("Unable to connect to the server.");
-        } finally {
-            setLoading(false);
-        }
+        SetError("");
+        navigate("/"); 
     };
 
     return (
         <div className="sign-in">
             <h2>Sign In</h2>
-
             <form onSubmit={handleSubmit}>
                 <div className="form-email">
                     <label htmlFor="email">Email:</label>
@@ -63,32 +28,21 @@ function SignIn() {
                         type="email"
                         id="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
+                        onChange={(e) => SetEmail(e.target.value)}
                     />
                 </div>
-
                 <div className="form-password">
                     <label htmlFor="password">Password:</label>
                     <input
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
+                        onChange={(e) => SetPassword(e.target.value)}
                     />
                 </div>
-
                 {error && <p className="error">{error}</p>}
-
-                <button type="submit" disabled={loading}>
-                    {loading ? "Signing In..." : "Sign In"}
-                </button>
-
-                <p>
-                    Don't have an account?{" "}
-                    <Link to="/signup">Sign Up</Link>
-                </p>
+                <button type="submit">Sign In</button>
+                <text>Don't have an account? <a href="/signup">Sign Up</a></text>
             </form>
         </div>
     );
