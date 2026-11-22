@@ -1,15 +1,26 @@
+import 'dotenv/config';
+import mongoose from 'mongoose';
 import app from './app.js';
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
-// Start the Express server
-const listener = app.listen(port, () => {
-  console.log(`Server running on port: ${port}`);
-});
+async function startServer() {
+  try {
+    if (!process.env.MONGODB_URI || !process.env.JWT_SECRET) {
+      throw new Error('Missing MONGODB_URI or JWT_SECRET in .env');
+    }
 
-// Gracefully stop the server
-const close = () => {
-  listener.close();
-};
+    await mongoose.connect(process.env.MONGODB_URI);
 
-export { close };
+    console.log('MongoDB connected');
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Server startup failed:', error.message);
+    process.exit(1);
+  }
+}
+
+startServer();
