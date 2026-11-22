@@ -1,6 +1,9 @@
+import 'dotenv/config';
 import { expect } from 'chai';
 import request from 'supertest';
+import mongoose from 'mongoose';
 import app from '../app.js';
+import User from '../src/User.js';
 
 describe('Hotel Planner Authentication API', function () {
   // Test 1: Successful login
