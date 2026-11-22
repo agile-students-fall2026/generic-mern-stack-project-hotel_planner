@@ -1,6 +1,7 @@
 // import and instantiate express
 import express from 'express'; // ES module import style
-import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import authRoutes from './src/routes/auth.js';
 const app = express(); // instantiate an Express object
 
 import initialSavedHotels from './mockData/savedHotels.js';
@@ -18,95 +19,8 @@ app.use('/static', express.static('public'));
 
 // ===== USER AUTHENTICATION =====
 
-// Session configuration
-app.use(
-  session({
-    secret:
-      process.env.SESSION_SECRET || 'hotel-planner-local-development-only',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-    },
-  }),
-);
-
-// Mock user for development and testing only
-const mockUser = {
-  id: '1',
-  email: 'test@hotelplanner.com',
-  password: 'password123',
-};
-
-// Login API
-app.post('/api/auth/login', (req, res) => {
-  const { email, password } = req.body || {};
-
-  if (!email || !password) {
-    return res.status(400).json({
-      error: 'Email and password are required',
-    });
-  }
-
-  if (email !== mockUser.email || password !== mockUser.password) {
-    return res.status(401).json({
-      error: 'Invalid email or password',
-    });
-  }
-
-  req.session.regenerate((err) => {
-    if (err) {
-      return res.status(500).json({
-        error: 'Unable to create login session',
-      });
-    }
-
-    req.session.userId = mockUser.id;
-
-    return res.json({
-      message: 'Login successful',
-      user: {
-        id: mockUser.id,
-        email: mockUser.email,
-      },
-    });
-  });
-});
-
-// Check authentication status
-app.get('/api/auth/me', (req, res) => {
-  if (!req.session.userId) {
-    return res.status(401).json({
-      error: 'Not authenticated',
-    });
-  }
-
-  return res.json({
-    authenticated: true,
-    user: {
-      id: mockUser.id,
-      email: mockUser.email,
-    },
-  });
-});
-
-// Logout API
-app.post('/api/auth/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({
-        error: 'Logout failed',
-      });
-    }
-
-    res.clearCookie('connect.sid');
-    return res.json({
-      message: 'Logged out successfully',
-    });
-  });
-});
+app.use(cookieParser());
+app.use('/api/auth', authRoutes);
 
 // ===== USER AUTHENTICATION END =====
 
