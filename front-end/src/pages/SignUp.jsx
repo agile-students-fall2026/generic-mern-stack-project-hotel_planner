@@ -1,22 +1,36 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sign.css";
 
-function SignUp() {
+export default function SignUp() {
   const navigate = useNavigate();
-  const [email, SetEmail] = useState("");
-  const [password, SetPassword] = useState("");
-  const [error, SetError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!email || !password) {
-      SetError("Please enter an email and password.");
-      return;
+    setError("");
+    setLoading(true);
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setError(data.error || "Registration failed.");
+        return;
+      }
+      navigate("/signin", { replace: true });
+    } catch {
+      setError("Unable to connect to the server.");
+    } finally {
+      setLoading(false);
     }
-    SetError("");
-    navigate("/");
-  };
+  }
 
   return (
     <div className="sign-up">
@@ -24,27 +38,20 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <div className="form-email">
           <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => SetEmail(e.target.value)}
-          />
+          <input id="email" type="email" value={email}
+            onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <div className="form-password">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => SetPassword(e.target.value)}
-          />
+          <label htmlFor="password">Password (8+ characters):</label>
+          <input id="password" type="password" value={password}
+            onChange={(e) => setPassword(e.target.value)} minLength={8} required />
         </div>
         {error && <p className="error">{error}</p>}
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
+        <p>Already have an account? <Link to="/signin">Sign In</Link></p>
       </form>
     </div>
   );
 }
-
-export default SignUp;
