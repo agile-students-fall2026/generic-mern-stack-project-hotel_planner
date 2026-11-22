@@ -1,7 +1,7 @@
 // import and instantiate express
 import express from 'express'; // ES module import style
 import cookieParser from 'cookie-parser';
-import authRoutes from './src/routes/auth.js';
+import authRoutes from './src/auth.js';
 const app = express(); // instantiate an Express object
 
 import initialSavedHotels from './mockData/savedHotels.js';
