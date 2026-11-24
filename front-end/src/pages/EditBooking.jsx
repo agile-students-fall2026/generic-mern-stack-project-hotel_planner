@@ -2,8 +2,10 @@ import "./EditSaved.css";
 import { useState } from "react";
 
 function EditBooking(props) {
-  const [checkInDraft, setCheckInDraft] = useState(props.checkIn);
-  const [checkOutDraft, setCheckOutDraft] = useState(props.checkOut);
+  const [checkInDraft, setCheckInDraft] = useState(props.checkIn || '');
+  const [checkOutDraft, setCheckOutDraft] = useState(props.checkOut || '');
+  const [checkInTimeDraft, setCheckInTimeDraft] = useState(props.checkInTime || "");
+  const [checkOutTimeDraft, setCheckOutTimeDraft] = useState(props.checkOutTime || "");
   const [draft, setDraft] = useState(props.description);
 
   return (
@@ -30,21 +32,33 @@ function EditBooking(props) {
             <div>
               <label htmlFor="edit-check-in">Check In:</label>
               <input
-                id="edit-check-in"
                 className="edit-date-input"
-                type="text"
+                type="date"
+                max={checkOutDraft || undefined}
                 value={checkInDraft}
                 onChange={(e) => setCheckInDraft(e.target.value)}
+              />
+              <input
+                className="edit-date-input"
+                type="time"
+                value={checkInTimeDraft }
+                onChange={(e) => setCheckInTimeDraft(e.target.value)}
               />
             </div>
             <div>
               <label htmlFor="edit-check-out">Check Out:</label>
               <input
-                id="edit-check-out"
                 className="edit-date-input"
-                type="text"
+                type="date"
+                min={checkInDraft || undefined}
                 value={checkOutDraft}
                 onChange={(e) => setCheckOutDraft(e.target.value)}
+              />
+              <input
+                className="edit-date-input"
+                type="time"
+                value={checkOutTimeDraft}
+                onChange={(e) => setCheckOutTimeDraft(e.target.value)}
               />
             </div>
             <label htmlFor="booking-notes">Notes</label>
@@ -68,7 +82,7 @@ function EditBooking(props) {
         <button
           className="EditSaved-Btn"
           onClick={() => {
-            props.onSave(props.id, draft, checkInDraft, checkOutDraft);
+            props.onSave(props.id, draft, checkInDraft, checkOutDraft, checkInTimeDraft, checkOutTimeDraft);
           }}
         >
           Save Changes

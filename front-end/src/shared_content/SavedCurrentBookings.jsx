@@ -72,7 +72,7 @@ export function SavedCurrentBooking({ children }) {
     }
   };
 
-  const updateBooking = async (id, newDescription, newCheckIn, newCheckOut) => {
+  const updateBooking = async (id, newDescription, newCheckIn, newCheckOut, newCheckInTime, newCheckOutTime) => {
     const res = await fetch(`/api/bookings/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -80,6 +80,8 @@ export function SavedCurrentBooking({ children }) {
         description: newDescription,
         checkIn: newCheckIn,
         checkOut: newCheckOut,
+        checkInTime: newCheckInTime,
+        checkOutTime: newCheckOutTime,
       }),
     });
     if (!res.ok) throw new Error("Couldn't save booking");

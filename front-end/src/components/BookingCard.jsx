@@ -1,3 +1,22 @@
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const [year, month, day] = dateString.split("-").map(Number);
+    return new Date(year, month - 1, day).toLocaleDateString("en-US", {//change to be based on diff location later??
+      month: "numeric",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+const formatTime = (timeString) => {
+  if (!timeString) return "";
+  const [hours, minutes] = timeString.split(":").map(Number);
+  return new Date(2000, 0, 1, hours, minutes).toLocaleTimeString("en-US", {//change to be based on diff location later??
+    hour: "numeric",
+    minute: "2-digit",
+  });
+};
+
 function BookingCard(props) {
   return (
     <article className="card">
@@ -15,8 +34,8 @@ function BookingCard(props) {
         <div className="card-meta">
           {props.location && <span>{props.location}</span>}
         </div>
-        <div>Check in: {props.checkIn}</div>
-        <div> Check out: {props.checkOut}</div>
+        <div>Check in: {formatDate(props.checkIn)} {formatTime(props.checkInTime)}</div>
+        <div>Check out: {formatDate(props.checkOut)} {formatTime(props.checkOutTime)}</div>
         Notes
         <div>
           <p className="card-description">{props.description}</p>
