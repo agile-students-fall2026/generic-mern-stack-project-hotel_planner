@@ -5,7 +5,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2026-12-04',
     description: 'Close to restaurants and shopping.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel1/400/225',
   },
   {
     id: '2',
@@ -13,7 +13,7 @@ const initialSearchHotels = [
     location: 'Brooklyn, New York',
     date: '2026-12-11',
     description: 'A stylish and convenient hotel with easy access to the city.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel2/400/225',
   },
   {
     id: '3',
@@ -21,7 +21,7 @@ const initialSearchHotels = [
     location: 'Paris, France',
     date: '2027-01-15',
     description: 'Ask for a room with a rooftop view.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel3/400/225',
   },
   {
     id: '4',
@@ -30,7 +30,7 @@ const initialSearchHotels = [
     date: '2027-02-06',
     description:
       'A cozy countryside inn with a fireplace lounge and hiking trails.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel4/400/225',
   },
   {
     id: '5',
@@ -39,7 +39,7 @@ const initialSearchHotels = [
     date: '2026-12-20',
     description:
       'A bright, modern hotel near the beach with a pool and a tapas bar.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel5/400/225',
   },
   {
     id: '6',
@@ -48,7 +48,7 @@ const initialSearchHotels = [
     date: '2027-03-08',
     description:
       'Spacious suites overlooking the harbor, close to ferries and the city center.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel6/400/225',
   },
   {
     id: '7',
@@ -56,7 +56,7 @@ const initialSearchHotels = [
     location: 'Kyoto, Japan',
     date: '2027-04-02',
     description: 'Try the onsen baths.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel7/400/225',
   },
 
   // generated mock data
@@ -67,7 +67,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-01-10',
     description: 'A luxury hotel near Fifth Avenue shopping.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel8/400/225',
   },
   {
     id: '9',
@@ -75,7 +75,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-01-18',
     description: 'Elegant rooms overlooking Central Park.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel9/400/225',
   },
   {
     id: '10',
@@ -83,7 +83,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-02-03',
     description: 'Luxury suites in the heart of Midtown.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel10/400/225',
   },
   {
     id: '11',
@@ -91,7 +91,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-02-14',
     description: 'Upscale rooms with Hudson River views.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel11/400/225',
   },
   {
     id: '12',
@@ -99,7 +99,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-03-02',
     description: 'A refined stay near museums and galleries.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel12/400/225',
   },
   {
     id: '13',
@@ -107,7 +107,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-03-12',
     description: 'Spacious suites near Central Park.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel13/400/225',
   },
   {
     id: '14',
@@ -115,7 +115,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-03-20',
     description: 'A luxury boutique hotel in Tribeca.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel14/400/225',
   },
   {
     id: '15',
@@ -123,7 +123,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-04-05',
     description: 'An upscale stay near SoHo boutiques.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel15/400/225',
   },
   {
     id: '16',
@@ -131,7 +131,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-04-18',
     description: 'Elegant accommodations near Bryant Park.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel16/400/225',
   },
   {
     id: '17',
@@ -139,7 +139,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-05-01',
     description: 'Luxury rooms near Madison Avenue.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel17/400/225',
   },
   {
     id: '18',
@@ -147,7 +147,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-05-12',
     description: 'A quiet luxury hotel in Greenwich Village.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel18/400/225',
   },
   {
     id: '19',
@@ -155,7 +155,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-05-25',
     description: 'An upscale stay near Broadway theaters.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel19/400/225',
   },
   {
     id: '20',
@@ -163,7 +163,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-06-03',
     description: 'Luxury suites near Columbus Circle.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel20/400/225',
   },
   {
     id: '21',
@@ -171,7 +171,7 @@ const initialSearchHotels = [
     location: 'Brooklyn, New York',
     date: '2027-06-15',
     description: 'A boutique luxury hotel near the promenade.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel21/400/225',
   },
   {
     id: '22',
@@ -179,7 +179,7 @@ const initialSearchHotels = [
     location: 'Brooklyn, New York',
     date: '2027-06-27',
     description: 'An elegant stay near local restaurants.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel22/400/225',
   },
   {
     id: '23',
@@ -187,7 +187,7 @@ const initialSearchHotels = [
     location: 'Brooklyn, New York',
     date: '2027-07-08',
     description: 'Luxury rooms overlooking the East River.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel23/400/225',
   },
   {
     id: '24',
@@ -195,7 +195,7 @@ const initialSearchHotels = [
     location: 'Queens, New York',
     date: '2027-07-20',
     description: 'A refined hotel in Astoria.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel24/400/225',
   },
   {
     id: '25',
@@ -203,7 +203,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-08-02',
     description: 'Upscale accommodations near Riverside Park.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel25/400/225',
   },
   {
     id: '26',
@@ -211,7 +211,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-08-14',
     description: 'A luxury stay near Chelsea galleries.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel26/400/225',
   },
   {
     id: '27',
@@ -219,7 +219,7 @@ const initialSearchHotels = [
     location: 'Manhattan, New York',
     date: '2027-08-26',
     description: 'Elegant rooms near Gramercy Park.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel27/400/225',
   },
 
   // hotels referenced by past stays in stayedHotels.js
@@ -230,7 +230,7 @@ const initialSearchHotels = [
     location: 'Washington D.C., USA',
     date: '2026-10-15',
     description: 'Historic luxury hotel near the National Mall.',
-    imageSrc:'',
+    imageSrc: 'https://picsum.photos/seed/hotel28/400/225',
   },
   {
     id: '29',
@@ -238,7 +238,7 @@ const initialSearchHotels = [
     location: 'Half Moon Bay, USA',
     date: '2024-02-20',
     description: 'Oceanfront resort on the California coast.',
-    imageSrc:'',
+    imageSrc: 'https://picsum.photos/seed/hotel29/400/225',
   },
   {
     id: '30',
@@ -246,7 +246,7 @@ const initialSearchHotels = [
     location: 'Tokyo, Japan',
     date: '2025-03-10',
     description: 'Skyline views from the top floors of Shinjuku Park Tower.',
-    imageSrc:'',
+    imageSrc: 'https://picsum.photos/seed/hotel30/400/225',
   },
   {
     id: '31',
@@ -254,7 +254,7 @@ const initialSearchHotels = [
     location: 'London, UK',
     date: '2025-07-04',
     description: 'Iconic hotel on the Strand by the River Thames.',
-    imageSrc:'',
+    imageSrc: 'https://picsum.photos/seed/hotel31/400/225',
   },
 ];
 

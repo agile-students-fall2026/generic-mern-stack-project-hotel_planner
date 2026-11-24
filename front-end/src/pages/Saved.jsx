@@ -92,6 +92,7 @@ function Saved() {
         ) : (
           visibleItems.map((item) => (
             <Card
+              imageSrc={item.imageSrc}
               key={item.id}
               description={item.description}
               location={item.location}
@@ -108,6 +109,7 @@ function Saved() {
   } else
     return (
       <EditSaved
+        imageSrc={activeItemEdit.imageSrc}
         id={activeItemEdit.id}
         name={activeItemEdit.name}
         location={activeItemEdit.location}

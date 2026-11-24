@@ -5,7 +5,7 @@ const initialSavedHotels = [
     location: 'Kyoto, Japan',
     date: '2027-04-02',
     description: 'Try the onsen baths.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel7/400/225',
   },
   {
     id: '1',
@@ -13,7 +13,7 @@ const initialSavedHotels = [
     location: 'Manhattan, New York',
     date: '2026-12-04',
     description: 'Close to restaurants and shopping.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel1/400/225',
   },
   {
     id: '21',
@@ -21,7 +21,7 @@ const initialSavedHotels = [
     location: 'Brooklyn, New York',
     date: '2027-06-15',
     description: 'A boutique luxury hotel near the promenade.',
-    imageSrc: '',
+    imageSrc: 'https://picsum.photos/seed/hotel21/400/225',
   },
 ];
 

@@ -10,7 +10,7 @@ export default function HotelDetails({ hotel }) {
           to={`/hotel/${hotel.id}`}
           aria-label={`View details for ${hotel.name}`}
         >
-          <img src={hotel.imageSrc || "https://picsum.photos/400/225"} alt="" />
+          {hotel.imageSrc && <img src={hotel.imageSrc} alt="" />}
         </Link>
       </div>
 

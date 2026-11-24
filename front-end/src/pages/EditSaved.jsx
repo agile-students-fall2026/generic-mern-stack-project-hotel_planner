@@ -10,10 +10,7 @@ function EditSaved(props) {
         <article className="edit-card">
           <div className="edit-image-and-edit">
             <div className="edit-card-image">
-              <img
-                src={props.imageSrc || "https://picsum.photos/400/225"}
-                alt="Picture"
-              />
+            {props.imageSrc && <img src={props.imageSrc} alt={props.name || ""} />}
             </div>
             <button id="EditSaved-BackBtn" onClick={props.goBack}>
               Back

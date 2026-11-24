@@ -98,6 +98,7 @@ function HomePage() {
             <p>Current Bookings</p>
             {curBookings.map((item) => (
               <BookingCard
+                imageSrc={item.imageSrc}
                 key={item.id}
                 checkIn={item.checkIn}
                 checkOut={item.checkOut}
@@ -115,6 +116,7 @@ function HomePage() {
     </main>
   ) : (
     <EditBooking
+      imageSrc={activeItemEdit.imageSrc}
       checkIn={activeItemEdit.checkIn}
       checkOut={activeItemEdit.checkOut}
       checkInTime={activeItemEdit.checkInTime}

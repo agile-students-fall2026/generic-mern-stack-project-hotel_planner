@@ -42,7 +42,7 @@ export function SavedCurrentBooking({ children }) {
     });
     if (!res.ok) throw new Error("Couldn't book hotel");
     const newBooking = await res.json();
-    setCurBookings((savedList) =>
+    setCurBookings((savedList) => //maybe make this re fetch after every data base update instead of updating? many pros and cons
       savedList.some((item) => sameId(item.id, newBooking.id))
         ? savedList
         : [...savedList, newBooking],
@@ -52,7 +52,7 @@ export function SavedCurrentBooking({ children }) {
   const deleteBooking = async (id) => {
     const res = await fetch(`/api/bookings/${id}`, { method: "DELETE" });
     if (!res.ok) throw new Error("Couldn't delete booking");
-    setCurBookings((savedList) =>
+    setCurBookings((savedList) => //maybe make this re fetch after every data base update instead of updating? many pros and cons
       savedList.filter((item) => !sameId(item.id, id)),
     );
   };
@@ -86,7 +86,7 @@ export function SavedCurrentBooking({ children }) {
     });
     if (!res.ok) throw new Error("Couldn't save booking");
     const updated = await res.json();
-    setCurBookings((bookingList) =>
+    setCurBookings((bookingList) => //maybe make this re fetch after every data base update instead of updating?
       bookingList.map((item) => (sameId(item.id, id) ? updated : item)),
     );
   };
