@@ -1,6 +1,7 @@
 // import and instantiate express
 import express from 'express'; // ES module import style
 import session from 'express-session';
+import crypto from 'crypto';
 const app = express(); // instantiate an Express object
 
 import initialSearchHotels from './mockData/hotelList.js';
@@ -18,7 +19,6 @@ app.use(express.urlencoded({ extended: true })); // decode url-encoded incoming 
 app.use('/static', express.static('public'));
 
 //NOTE: Above code is taken from SWE sample/example code from https://github.com/nyu-software-engineering/express-js-starter-app/blob/master/app.js
-
 
 // =====Sign Up and Sign In ======
 let users = initialUsers.map((user) => ({ ...user })); //temporary Data base
@@ -46,14 +46,17 @@ app.post('/api/auth/signup', (req, res) => {
     return;
   }
 
-  highestId+=1;
+  highestId += 1;
   const newUser = {
     id: String(highestId), //WILL CHANGE USER ID TO BE EMAIL LATER INSTEAD OF JUST A NUMBER
     email: user.email,
     password: user.password,
   };
   users.push(newUser);
-  const body = { message: 'Sign up successful', user: { id: newUser.id, email: newUser.email } };
+  const body = {
+    message: 'Sign up successful',
+    user: { id: newUser.id, email: newUser.email },
+  };
   res.status(201);
   res.json(body);
 });
@@ -232,23 +235,23 @@ app.delete('/api/saved/:id', (req, res) => {
 app.get('/api/profile/stays', (req, res) => {
   if (!req.session.userId) {
     return res.status(401).json({
-      error: "Not authenticated"
+      error: 'Not authenticated',
     });
   }
-  
+
   const userStays = stayedHotels
     .filter((stay) => stay.userId === req.session.userId)
     .map((stay) => {
-        const hotel = initialSearchHotels.find((h) => h.id === stay.hotelId);
-        return {
-            id: stay.id,
-            userId: stay.userId,
-            hotelId: stay.hotelId,
-            hotel: hotel ? hotel.name : 'Unknown hotel',
-            city: hotel ? hotel.location : '',
-            date: stay.date,
-        };
-  });
+      const hotel = initialSearchHotels.find((h) => h.id === stay.hotelId);
+      return {
+        id: stay.id,
+        userId: stay.userId,
+        hotelId: stay.hotelId,
+        hotel: hotel ? hotel.name : 'Unknown hotel',
+        city: hotel ? hotel.location : '',
+        date: stay.date,
+      };
+    });
   return res.json(userStays);
 });
 // ===== PROFILE END =====
@@ -305,7 +308,8 @@ app.post('/api/bookings/:id', (req, res) => {
     return;
   }
 
-  const { description, checkIn, checkOut, checkInTime, checkOutTime } = req.body || {};
+  const { description, checkIn, checkOut, checkInTime, checkOutTime } =
+    req.body || {};
   if (
     typeof description !== 'string' ||
     typeof checkIn !== 'string' ||
@@ -370,6 +374,77 @@ app.get('/api/hotels/:id', (req, res) => {
 
   return res.json({ hotel });
 });
+
+// ===== Forgot / Reset Password =====
+let resetTokens = [];
+const RESET_TOKEN_EXPIRATION = 15 * 60 * 1000;
+
+app.post('/api/auth/forgot-password', (req, res) => {
+  const { email } = req.body || {};
+
+  if (!email) {
+    return res.status(400).json({ error: 'Email is required' });
+  }
+
+  const genericResponse = {
+    message: 'If an account exists for that email, a reset link has been sent.',
+  };
+
+  const user = users.find((u) => u.email === email);
+  if (!user) {
+    return res.json(genericResponse);
+  }
+
+  resetTokens = resetTokens.filter((t) => t.email !== user.email);
+  const token = crypto.randomBytes(20).toString('hex');
+  resetTokens.push({
+    email: user.email,
+    token,
+    expiresAt: Date.now() + RESET_TOKEN_EXPIRATION,
+  });
+
+  // TODO: email this link once we have an email service
+  const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
+  const resetLink = `${FRONTEND_URL}/reset-password?token=${token}`;
+
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`Password reset link for ${user.email}: ${resetLink}`);
+    return res.json({
+      ...genericResponse,
+      devToken: token,
+      devResetLink: resetLink,
+    });
+  }
+
+  return res.json(genericResponse);
+});
+
+app.post('/api/auth/reset-password', (req, res) => {
+  const { token, newPassword } = req.body || {};
+
+  if (!token || !newPassword) {
+    return res
+      .status(400)
+      .json({ error: 'Token and new password are required' });
+  }
+
+  const record = resetTokens.find((t) => t.token === token);
+  if (!record || record.expiresAt < Date.now()) {
+    return res.status(400).json({ error: 'Invalid or expired token' });
+  }
+
+  const user = users.find((u) => u.email === record.email);
+  if (!user) {
+    return res.status(400).json({ error: 'Invalid or expired token' });
+  }
+
+  user.password = newPassword;
+  resetTokens = resetTokens.filter((t) => t.token !== token);
+
+  return res.json({ message: 'Password has been reset successfully' });
+});
+
+// ===== Forgot / Reset Password END =====
 
 // export the express app we created to make it available to other modules
 export default app;
