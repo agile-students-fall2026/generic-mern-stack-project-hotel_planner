@@ -357,5 +357,15 @@ app.get('/api/hotels/search', (req, res) => {
   return res.json({ hotels });
 });
 
+app.get('/api/hotels/:id', (req, res) => {
+  const hotel = hotelList.find((item) => item.id === req.params.id);
+
+  if (!hotel) {
+    return res.status(404).json({ error: 'Hotel not found' });
+  }
+
+  return res.json({ hotel });
+});
+
 // export the express app we created to make it available to other modules
 export default app;
