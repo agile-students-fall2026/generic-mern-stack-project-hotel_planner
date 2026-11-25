@@ -5,7 +5,7 @@ function Card(props) {
     <article className="card">
       <div className="image-and-edit">
         <div className="card-image">
-          <img src={props.imageSrc || "https://picsum.photos/400/225"} alt="" />
+          {props.imageSrc && <img src={props.imageSrc} alt={props.name || ""} />}
         </div>
         <button className="Saved-EditBtn" onClick={props.Edit}>
           Edit

@@ -30,9 +30,9 @@ function HomePage() {
     setActiveItemEdit(null);
   };
 
-  const handleSave = async (id, newDescription, newCheckIn, newCheckOut) => {
+  const handleSave = async (id, newDescription, newCheckIn, newCheckOut, newCheckInTime, newCheckOutTime) => {
     try {
-      await updateBooking(id, newDescription, newCheckIn, newCheckOut);
+      await updateBooking(id, newDescription, newCheckIn, newCheckOut, newCheckInTime, newCheckOutTime);
       handleGoBack();
     } catch (err) {
       console.error(err.message);
@@ -110,9 +110,12 @@ function HomePage() {
             <p>Current Bookings</p>
             {curBookings.map((item) => (
               <BookingCard
+                imageSrc={item.imageSrc}
                 key={item.id}
                 checkIn={item.checkIn}
                 checkOut={item.checkOut}
+                checkInTime={item.checkInTime}
+                checkOutTime={item.checkOutTime}
                 name={item.name}
                 location={item.location}
                 description={item.description}
@@ -125,8 +128,11 @@ function HomePage() {
     </main>
   ) : (
     <EditBooking
+      imageSrc={activeItemEdit.imageSrc}
       checkIn={activeItemEdit.checkIn}
       checkOut={activeItemEdit.checkOut}
+      checkInTime={activeItemEdit.checkInTime}
+      checkOutTime={activeItemEdit.checkOutTime}
       id={activeItemEdit.id}
       name={activeItemEdit.name}
       location={activeItemEdit.location}

@@ -285,6 +285,8 @@ app.post('/api/bookings', (req, res) => {
     location: hotel.location || '',
     checkIn: hotel.checkIn || '',
     checkOut: hotel.checkOut || '',
+    checkInTime: hotel.checkInTime || '',
+    checkOutTime: hotel.checkOutTime || '',
     description: hotel.description || '',
     imageSrc: hotel.imageSrc || '', //should change this later to match an image source for google places
   };
@@ -303,7 +305,7 @@ app.post('/api/bookings/:id', (req, res) => {
     return;
   }
 
-  const { description, checkIn, checkOut } = req.body || {};
+  const { description, checkIn, checkOut, checkInTime, checkOutTime } = req.body || {};
   if (
     typeof description !== 'string' ||
     typeof checkIn !== 'string' ||
@@ -320,6 +322,8 @@ app.post('/api/bookings/:id', (req, res) => {
   booking.description = description;
   booking.checkIn = checkIn;
   booking.checkOut = checkOut;
+  booking.checkInTime = checkInTime;
+  booking.checkOutTime = checkOutTime;
   res.json(booking);
 });
 
