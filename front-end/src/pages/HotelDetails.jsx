@@ -27,7 +27,7 @@ function HotelDetails() {
       name: hotel.name,
       location: hotel.location,
       description: hotel.description,
-      imageSrc: hotel.image,
+      imageSrc: hotel.imageSrc,
     });
   }
 
@@ -37,7 +37,7 @@ function HotelDetails() {
       name: hotel.name,
       location: hotel.location,
       description: "",
-      imageSrc: hotel.image,
+      imageSrc: hotel.imageSrc,
       checkIn: "",
       checkOut: "",
     });
