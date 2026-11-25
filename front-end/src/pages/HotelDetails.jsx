@@ -1,16 +1,53 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useSaved } from "../shared_content/SavedContent";
 import { useCurBookings } from "../shared_content/SavedCurrentBookings";
 import "./HotelDetails.css";
-import initialSearchHotels from "../../../back-end/mockData/hotelList";
 
 function HotelDetails() {
   const { id } = useParams();
 
-  const hotel = initialSearchHotels.find((item) => item.id === id);
+  const [result, setResult] = useState(null);
 
   const { isSaved, toggleSaved } = useSaved();
   const { isBookingSaved, toggleBookingSaved } = useCurBookings();
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    async function loadHotel() {
+      try {
+        const response = await fetch(`/api/hotels/${encodeURIComponent(id)}`, {
+          signal,
+        });
+
+        if (!response.ok && response.status !== 404) {
+          throw new Error("Could not load hotel details.");
+        }
+
+        const hotel = response.ok ? (await response.json()).hotel : null;
+        if (!signal.aborted) setResult({ id, hotel });
+      } catch {
+        if (!signal.aborted) {
+          setResult({ id, error: "Could not load hotel details." });
+        }
+      }
+    }
+
+    loadHotel();
+    return () => controller.abort();
+  }, [id]);
+
+  if (!result || result.id !== id) {
+    return <p role="status">Loading hotel...</p>;
+  }
+
+  if (result.error) {
+    return <p role="alert">{result.error}</p>;
+  }
+
+  const { hotel } = result;
 
   if (!hotel) {
     return (
