@@ -8,11 +8,21 @@ function SignUp() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
 
     try {
       const response = await fetch("/api/auth/signup", {
@@ -27,16 +37,21 @@ function SignUp() {
         return;
       }
 
-      navigate("/signin");
+      setSuccess(true);
+      setTimeout(() => navigate("/signin", { replace: true }), 2000);
     } catch (err) {
       console.error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="sign-up">
       <h2>Sign Up</h2>
-
+      {success ? (
+        <p>Account created! Redirecting to Sign In...</p>
+      ) : (
       <form onSubmit={handleSubmit}>
         <div className="form-email">
           <label htmlFor="email">Email:</label>
@@ -60,15 +75,29 @@ function SignUp() {
           />
         </div>
 
+        <div className="form-password">
+          <label htmlFor="confirm-password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm-password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+
         {error && <p className="error">{error}</p>}
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
 
         <p>
           Already have an account?{" "}
           <Link to="/signin">Sign In</Link>
         </p>
       </form>
+       )}
     </div>
   );
 }
