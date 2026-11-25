@@ -12,12 +12,14 @@ import Saved from "./pages/Saved";
 import EditSaved from "./pages/EditSaved";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import { SavedContent } from "./shared_content/SavedContent";
 import { SavedCurrentBooking } from "./shared_content/SavedCurrentBookings";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-const hideNavOn = ["/signin", "/signup"];
+const hideNavOn = ["/signin", "/signup", "/forgot-password", "/reset-password"];
 
 const HomeIcon = () => (
   <svg
@@ -83,6 +85,8 @@ function AppContent() {
           <Route path="/editsaved" element={<EditSaved />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/hotel/:id" element={<HotelDetails />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
